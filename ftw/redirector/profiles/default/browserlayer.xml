@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<layers>
+
+    <layer name="ftw.redirector"
+           interface="ftw.redirector.interfaces.IRedirectorLayer" />
+
+</layers>
