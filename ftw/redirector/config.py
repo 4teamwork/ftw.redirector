@@ -28,6 +28,10 @@ class RedirectConfig(Item):
     def Title(self):
         return 'Redirect Configuration'
 
+    @property
+    def exclude_from_nav(self):
+        return True
+
 
 @adapter(IContentish)
 @implementer(IRedirectConfig)
