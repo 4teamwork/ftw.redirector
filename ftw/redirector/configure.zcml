@@ -3,15 +3,22 @@
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:profilehook="http://namespaces.zope.org/profilehook"
     i18n_domain="ftw.redirector">
 
     <five:registerPackage package="." initialize=".initialize" />
+    <include package="ftw.profilehook" />
 
     <genericsetup:registerProfile
         name="default"
         title="ftw.redirector"
         directory="profiles/default"
         provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <profilehook:hook
+        profile="ftw.redirector:default"
+        handler=".hooks.installed"
         />
 
     <genericsetup:registerProfile
@@ -21,5 +28,13 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
         />
+
+    <profilehook:hook
+        profile="ftw.redirector:uninstall"
+        handler=".hooks.uninstalled"
+        />
+
+    <adapter factory=".config.lookup_config" />
+    <adapter factory=".config.lookup_config_on_portal" />
 
 </configure>

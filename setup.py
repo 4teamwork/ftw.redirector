@@ -39,6 +39,10 @@ setup(name='ftw.redirector',
 
       install_requires=[
           'Plone',
+          'ftw.profilehook',
+          'plone.app.dexterity',
+          'plone.dexterity',
+          'plone.directives.form',
           'setuptools',
       ],
       tests_require=tests_require,
