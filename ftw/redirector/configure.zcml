@@ -10,6 +10,8 @@
     <i18n:registerTranslations directory="locales"/>
     <include package="ftw.profilehook" />
 
+    <include package=".browser" />
+
     <genericsetup:registerProfile
         name="default"
         title="ftw.redirector"

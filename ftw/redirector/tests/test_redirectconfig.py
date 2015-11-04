@@ -37,3 +37,10 @@ class TestRedirectConfig(FunctionalTestCase):
                             {'destination_path': u'/something/two',
                              'source_path': u'/something/one'}],
                            IRedirectConfig(self.portal).redirects)
+
+    @browsing
+    def test_control_panel_action_points_to_config_object(self, browser):
+        self.grant('Manager')
+        browser.login().open(view='@@overview-controlpanel')
+        browser.css('.configlets').find('Redirect Configuration').first.click()
+        self.assertEquals('http://nohost/plone/redirect-config', browser.url)
