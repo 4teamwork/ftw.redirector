@@ -7,6 +7,7 @@
     i18n_domain="ftw.redirector">
 
     <five:registerPackage package="." initialize=".initialize" />
+    <i18n:registerTranslations directory="locales"/>
     <include package="ftw.profilehook" />
 
     <genericsetup:registerProfile

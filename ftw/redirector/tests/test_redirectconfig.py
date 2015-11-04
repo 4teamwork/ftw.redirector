@@ -1,16 +1,17 @@
 from ftw.redirector.interfaces import IRedirectConfig
 from ftw.redirector.tests import FunctionalTestCase
+from ftw.testbrowser import browsing
 from plone import api
 
 
 class TestRedirectConfig(FunctionalTestCase):
 
     def test_getting_redirectconfig_by_adapting_context(self):
-        config = IRedirectConfig(self.layer['portal'])
+        config = IRedirectConfig(self.portal)
         self.assertTrue(IRedirectConfig.providedBy(config))
 
     def test_config_title(self):
-        config = IRedirectConfig(self.layer['portal'])
+        config = IRedirectConfig(self.portal)
         self.assertEquals('Redirect Configuration',
                           config.Title())
 
@@ -18,3 +19,21 @@ class TestRedirectConfig(FunctionalTestCase):
         config_brain, = api.content.find(portal_type='ftw.redirector.RedirectConfig')
         self.assertTrue(config_brain.exclude_from_nav,
                         'Should be excluded from navigation.')
+
+    @browsing
+    def test_edit_configuration(self, browser):
+        self.grant('Manager')
+        browser.login().open(IRedirectConfig(self.portal))
+        browser.find(u'Edit').click()
+        browser.fill(
+            {u'Redirects': [{u'Source Path': u'/foo',
+                             u'Destination Path': u'/bar'},
+
+                            {u'Source Path': u'/something/one',
+                             u'Destination Path': u'/something/two'}]}).save()
+
+        self.assertEquals( [{'destination_path': u'/bar',
+                             'source_path': u'/foo'},
+                            {'destination_path': u'/something/two',
+                             'source_path': u'/something/one'}],
+                           IRedirectConfig(self.portal).redirects)

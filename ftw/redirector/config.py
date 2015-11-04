@@ -1,5 +1,8 @@
 from Acquisition import aq_inner
 from Acquisition import aq_parent
+from collective.z3cform.datagridfield import DataGridFieldFactory
+from collective.z3cform.datagridfield import DictRow
+from ftw.redirector import _
 from ftw.redirector.interfaces import IRedirectConfig
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.dexterity.content import Item
@@ -10,13 +13,28 @@ from zope.component import adapter
 from zope.interface import alsoProvides
 from zope.interface import implementer
 from zope.interface import implements
+from zope.schema import List
+from zope.schema import TextLine
 
 
 REDIRECT_CONFIG_ID = 'redirect-config'
 
 
+class IRedirectItem(form.Schema):
+
+    source_path = TextLine(
+        title=_(u'label_source_path', default=u'Source Path'))
+
+    destination_path = TextLine(
+        title=_(u'label_destination_path', default=u'Destination Path'))
+
+
 class IRedirectConfigSchema(form.Schema):
-    pass
+
+    form.widget('redirects', DataGridFieldFactory)
+    redirects = List(
+        title=_(u'label_redirects', default=u'Redirects'),
+        value_type=DictRow(schema=IRedirectItem))
 
 
 alsoProvides(IRedirectConfigSchema, IFormFieldProvider)
@@ -26,7 +44,7 @@ class RedirectConfig(Item):
     implements(IRedirectConfig)
 
     def Title(self):
-        return 'Redirect Configuration'
+        return _(u'Redirect Configuration')
 
     @property
     def exclude_from_nav(self):

@@ -4,6 +4,7 @@ import os
 version = '1.0.0.dev0'
 
 tests_require = [
+    'ftw.testbrowser',
     'ftw.testing',
     'plone.app.testing',
     'unittest2',
@@ -39,6 +40,7 @@ setup(name='ftw.redirector',
 
       install_requires=[
           'Plone',
+          'collective.z3cform.datagridfield',
           'ftw.profilehook',
           'plone.api',
           'plone.app.dexterity',
