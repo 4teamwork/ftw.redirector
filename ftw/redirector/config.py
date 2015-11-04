@@ -25,8 +25,8 @@ class IRule(form.Schema):
     source_path = TextLine(
         title=_(u'label_source_path', default=u'Source Path'))
 
-    destination_path = TextLine(
-        title=_(u'label_destination_path', default=u'Destination Path'))
+    destination = TextLine(
+        title=_(u'label_destination', default=u'Destination'))
 
 
 class IRedirectConfigSchema(form.Schema):

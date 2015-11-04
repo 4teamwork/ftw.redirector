@@ -1,5 +1,5 @@
 
 def make_rules(*redirects):
     return [{'source_path': src,
-             'destination_path': dst}
+             'destination': dst}
             for (src, dst) in redirects]

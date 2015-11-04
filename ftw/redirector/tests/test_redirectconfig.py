@@ -36,13 +36,13 @@ class TestRedirectConfig(FunctionalTestCase):
         browser.fill(
             {u'Redirect rules': [
                 {u'Source Path': u'/foo',
-                 u'Destination Path': u'/bar'},
+                 u'Destination': u'/bar'},
                 {u'Source Path': u'/something/one',
-                 u'Destination Path': u'/something/two'}]}).save()
+                 u'Destination': u'/something/two'}]}).save()
 
-        self.assertEquals( [{'destination_path': u'/bar',
+        self.assertEquals( [{'destination': u'/bar',
                              'source_path': u'/foo'},
-                            {'destination_path': u'/something/two',
+                            {'destination': u'/something/two',
                              'source_path': u'/something/one'}],
                            IRedirectConfig(self.portal).rules)
 

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-11-04 13:59+0000\n"
+"POT-Creation-Date: 2015-11-04 15:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,9 +20,9 @@ msgstr ""
 msgid "Redirect Configuration"
 msgstr ""
 
-#. Default: "Destination Path"
+#. Default: "Destination"
 #: ./ftw/redirector/config.py:29
-msgid "label_destination_path"
+msgid "label_destination"
 msgstr ""
 
 #. Default: "Redirect rules"

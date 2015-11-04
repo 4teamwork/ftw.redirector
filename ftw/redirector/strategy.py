@@ -23,7 +23,7 @@ class RedirectStrategy(object):
     def _match(self, redirect, path):
         path = beginning_slash(path)
         src = beginning_slash(redirect['source_path'])
-        dst = beginning_slash(redirect['destination_path'])
+        dst = beginning_slash(redirect['destination'])
 
         if ending_slash(path) == ending_slash(src):
             return dst
