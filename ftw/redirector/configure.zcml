@@ -39,5 +39,6 @@
 
     <adapter factory=".config.lookup_config" />
     <adapter factory=".config.lookup_config_on_portal" />
+    <adapter factory=".strategy.RedirectStrategy" />
 
 </configure>
