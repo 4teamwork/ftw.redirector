@@ -72,4 +72,4 @@ class TestRedirectStrategy(TestCase):
         self.assertEquals(target, self.strategy.find_redirect(source), msg=msg)
 
     def configure_redirects(self, *redirects):
-        self.config.rules = make_rules(redirects)
+        self.config.rules = make_rules(*redirects)
