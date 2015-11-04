@@ -1,5 +1,6 @@
 from ftw.redirector.interfaces import IRedirectStrategy
 from ftw.redirector.strategy import RedirectStrategy
+from ftw.redirector.tests.helpers import make_rules
 from unittest2 import TestCase
 from zope.interface.verify import verifyClass
 
@@ -71,6 +72,4 @@ class TestRedirectStrategy(TestCase):
         self.assertEquals(target, self.strategy.find_redirect(source), msg=msg)
 
     def configure_redirects(self, *redirects):
-        self.config.rules = [{'source_path': src,
-                              'destination_path': dst}
-                                 for (src, dst) in redirects]
+        self.config.rules = make_rules(redirects)
