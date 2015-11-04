@@ -14,7 +14,7 @@ class RedirectStrategy(object):
         self.config = config
 
     def find_redirect(self, path):
-        for redirect in self.config.redirects:
+        for redirect in self.config.rules or ():
             target = self._match(redirect, path)
             if target:
                 return target

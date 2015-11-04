@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-11-04 09:16+0000\n"
+"POT-Creation-Date: 2015-11-04 13:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,6 +15,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 
 #: ./ftw/redirector/config.py:47
+#: ./ftw/redirector/profiles/default/controlpanel.xml
 #: ./ftw/redirector/profiles/default/types/ftw.redirector.RedirectConfig.xml
 msgid "Redirect Configuration"
 msgstr ""
@@ -24,9 +25,9 @@ msgstr ""
 msgid "label_destination_path"
 msgstr ""
 
-#. Default: "Redirects"
+#. Default: "Redirect rules"
 #: ./ftw/redirector/config.py:36
-msgid "label_redirects"
+msgid "label_redirect_rules"
 msgstr ""
 
 #. Default: "Source Path"

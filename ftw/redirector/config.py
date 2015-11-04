@@ -20,7 +20,7 @@ from zope.schema import TextLine
 REDIRECT_CONFIG_ID = 'redirect-config'
 
 
-class IRedirectItem(form.Schema):
+class IRule(form.Schema):
 
     source_path = TextLine(
         title=_(u'label_source_path', default=u'Source Path'))
@@ -31,10 +31,10 @@ class IRedirectItem(form.Schema):
 
 class IRedirectConfigSchema(form.Schema):
 
-    form.widget('redirects', DataGridFieldFactory)
-    redirects = List(
-        title=_(u'label_redirects', default=u'Redirects'),
-        value_type=DictRow(schema=IRedirectItem))
+    form.widget('rules', DataGridFieldFactory)
+    rules = List(
+        title=_(u'label_redirect_rules', default=u'Redirect rules'),
+        value_type=DictRow(schema=IRule))
 
 
 alsoProvides(IRedirectConfigSchema, IFormFieldProvider)

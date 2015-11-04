@@ -26,17 +26,17 @@ class TestRedirectConfig(FunctionalTestCase):
         browser.login().open(IRedirectConfig(self.portal))
         browser.find(u'Edit').click()
         browser.fill(
-            {u'Redirects': [{u'Source Path': u'/foo',
-                             u'Destination Path': u'/bar'},
-
-                            {u'Source Path': u'/something/one',
-                             u'Destination Path': u'/something/two'}]}).save()
+            {u'Redirect rules': [
+                {u'Source Path': u'/foo',
+                 u'Destination Path': u'/bar'},
+                {u'Source Path': u'/something/one',
+                 u'Destination Path': u'/something/two'}]}).save()
 
         self.assertEquals( [{'destination_path': u'/bar',
                              'source_path': u'/foo'},
                             {'destination_path': u'/something/two',
                              'source_path': u'/something/one'}],
-                           IRedirectConfig(self.portal).redirects)
+                           IRedirectConfig(self.portal).rules)
 
     @browsing
     def test_control_panel_action_points_to_config_object(self, browser):

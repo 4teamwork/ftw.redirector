@@ -17,7 +17,7 @@ class Stub(object):
 class TestRedirectStrategy(TestCase):
 
     def setUp(self):
-        self.config = Stub(redirects=[]).named('RedirectConfig')
+        self.config = Stub(rules=[]).named('RedirectConfig')
         self.request = Stub().named('request')
         self.strategy = RedirectStrategy(self.config, self.request)
 
@@ -71,6 +71,6 @@ class TestRedirectStrategy(TestCase):
         self.assertEquals(target, self.strategy.find_redirect(source), msg=msg)
 
     def configure_redirects(self, *redirects):
-        self.config.redirects = [{'source_path': src,
-                                  'destination_path': dst}
+        self.config.rules = [{'source_path': src,
+                              'destination_path': dst}
                                  for (src, dst) in redirects]
