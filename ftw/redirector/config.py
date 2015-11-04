@@ -31,7 +31,7 @@ class IRule(form.Schema):
 
 class IRedirectConfigSchema(form.Schema):
 
-    form.widget('rules', DataGridFieldFactory)
+    form.widget('rules', DataGridFieldFactory, allow_reorder=True)
     rules = List(
         title=_(u'label_redirect_rules', default=u'Redirect rules'),
         value_type=DictRow(schema=IRule))
