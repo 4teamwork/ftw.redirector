@@ -54,7 +54,7 @@ class RedirectConfig(Item):
 @adapter(IContentish)
 @implementer(IRedirectConfig)
 def lookup_config(context):
-    return aq_parent(aq_inner(context))
+    return IRedirectConfig(aq_parent(aq_inner(context)))
 
 
 @adapter(IPloneSiteRoot)

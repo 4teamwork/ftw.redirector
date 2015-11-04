@@ -1,3 +1,5 @@
+from ftw.builder import Builder
+from ftw.builder import create
 from ftw.redirector.interfaces import IRedirectConfig
 from ftw.redirector.tests import FunctionalTestCase
 from ftw.testbrowser import browsing
@@ -6,9 +8,15 @@ from plone import api
 
 class TestRedirectConfig(FunctionalTestCase):
 
-    def test_getting_redirectconfig_by_adapting_context(self):
+    def test_get_config_by_adapting_portal(self):
         config = IRedirectConfig(self.portal)
         self.assertTrue(IRedirectConfig.providedBy(config))
+
+    def test_get_config_by_adapting_any_context_in_site_root(self):
+        self.grant('Manager')
+        obj = create(Builder('folder').within(create(Builder('folder'))))
+        self.assertEquals(IRedirectConfig(self.portal), IRedirectConfig(obj))
+        self.assertTrue(IRedirectConfig.providedBy(IRedirectConfig(obj)))
 
     def test_config_title(self):
         config = IRedirectConfig(self.portal)
