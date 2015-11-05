@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-11-04 15:51+0000\n"
+"POT-Creation-Date: 2015-11-05 16:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,25 +14,48 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0\n"
 "Preferred-Encodings: utf-8 latin1\n"
 
-#: ./ftw/redirector/config.py:47
+#: ./ftw/redirector/config.py:110
 #: ./ftw/redirector/profiles/default/controlpanel.xml
 #: ./ftw/redirector/profiles/default/types/ftw.redirector.RedirectConfig.xml
 msgid "Redirect Configuration"
 msgstr "Konfiguration Umleitungen"
 
+#. Default: "Row ${rownum}: the destination \"${value}\" must be a path (start with slash) or a full qualified URL."
+#: ./ftw/redirector/config.py:95
+msgid "destination_must_be_path_or_url"
+msgstr "Zeile ${rownum}: Das Ziel \"${value}\" muss ein Pfad (beginnt mit Slash) oder eine URL sein."
+
+#. Default: "Row ${rownum}: destination required."
+#: ./ftw/redirector/config.py:84
+msgid "destination_required"
+msgstr "Zeile ${rownum}: Ziel benötigt."
+
 #. Default: "Destination"
-#: ./ftw/redirector/config.py:29
+#: ./ftw/redirector/config.py:33
 msgid "label_destination"
 msgstr "Ziel"
 
 #. Default: "Redirect rules"
-#: ./ftw/redirector/config.py:36
+#: ./ftw/redirector/config.py:40
 msgid "label_redirect_rules"
 msgstr "Umleitungen"
 
 #. Default: "Source Path"
-#: ./ftw/redirector/config.py:26
+#: ./ftw/redirector/config.py:30
 msgid "label_source_path"
 msgstr "Quell-Pfad"
 
+#. Default: "Row ${rownum}: invalid source path: cannot redirect from root."
+#: ./ftw/redirector/config.py:67
+msgid "source_path_invalid_root"
+msgstr "Zeile ${rownum}: Ungültiger Quell-Pfad \"/\"."
 
+#. Default: "Row ${rownum}: the source path \"${value}\" must start with a slash."
+#: ./ftw/redirector/config.py:76
+msgid "source_path_must_start_with_slash"
+msgstr "Zeile ${rownum}: Der Quell-Pfad \"$value\" muss mit einem Slash beginnen."
+
+#. Default: "Row ${rownum}: source path required."
+#: ./ftw/redirector/config.py:61
+msgid "source_path_required"
+msgstr "Zeile ${rownum}: Quell-Pfad benögigt."
