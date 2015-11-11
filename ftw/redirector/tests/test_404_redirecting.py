@@ -33,3 +33,14 @@ class TestRedirectingOnNotFound(FunctionalTestCase):
         create(Builder('page').titled('foo'))
         browser.open('http://nohost/plone/foo')
         self.assertEqual('http://nohost/plone/foo', browser.url)
+
+    @browsing
+    def test_redirecting_with_umlauts(self, browser):
+        self.grant('Manager')
+        config = IRedirectConfig(self.portal)
+        config.rules = make_rules((u'/hall\xf6chen', u'/target'))
+        create(Builder('page').titled('target'))
+
+        browser.replace_request_header('X-zope-handle-errors', 'True')
+        browser.open('http://nohost/plone/hall\xc3\xb6chen')
+        self.assertEqual('http://nohost/plone/target', browser.url)
