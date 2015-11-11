@@ -12,6 +12,7 @@ from Products.CMFPlone.interfaces import IPloneSiteRoot
 from z3c.form.validator import SimpleFieldValidator
 from z3c.form.validator import WidgetValidatorDiscriminators
 from zope.component import adapter
+from zope.i18nmessageid import Message
 from zope.interface import alsoProvides
 from zope.interface import implementer
 from zope.interface import implements
@@ -22,6 +23,32 @@ import re
 
 
 REDIRECT_CONFIG_ID = 'redirect-config'
+
+RULES = dict(
+    (u'm{}'.format(idx), msg)
+    for (idx, msg)
+    in enumerate((
+
+        _(u'Redirects are only applied if no content is found (404).'),
+        _(u'Redirect rules are applied top-down: top roles have higher'
+          u' priority. The first matching rule is applied, later rules are'
+          u' not considered.'),
+        _(u'Redirects match when the request path starts with the'
+          u' source path.'),
+        _(u'Each rule requires a source path and a destination.'),
+        _(u'The source path must start with a slash and should not'
+          u' be the site root.'),
+        _(u'The destination may be a path (starting with a slash)'
+          u' or an URL to an external site.'),
+
+    )))
+
+RULES_DESCRIPTION = Message(
+    u'<ul>' +
+    ''.join('<li>${%s}</li>' % key for key in sorted(RULES.keys())) +
+    u'</ul>',
+    domain='ftw.redirector',
+    mapping=RULES)
 
 
 class IRule(form.Schema):
@@ -39,7 +66,7 @@ class IRedirectConfigSchema(form.Schema):
     rules = List(
         title=_(u'label_redirect_rules', default=u'Redirect rules'),
         value_type=DictRow(schema=IRule),
-    )
+        description=RULES_DESCRIPTION)
 
 
 alsoProvides(IRedirectConfigSchema, IFormFieldProvider)

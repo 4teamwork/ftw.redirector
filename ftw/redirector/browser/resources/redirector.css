@@ -33,3 +33,9 @@ body.portaltype-ftw-redirector-redirectconfig.template-edit #formfield-form-widg
 }
 
 /* END: AUTO INCREMENT COLUMN */
+
+
+/* Hide rules description from standard view; we only want it in edit */
+body.template-view.portaltype-ftw-redirector-redirectconfig #formfield-form-widgets-rules .formHelp {
+  display: none;
+}
