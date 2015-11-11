@@ -37,6 +37,32 @@ control panel, quickinstaller or portal_setup.
 After installing the addon, go to the Plone control panel for redirects in
 order to add new redirects.
 
+
+Usage
+=====
+
+After successfully installing the addon, go to the Plone control panel,
+where a new "Redirect Configuration" link is added:
+
+.. image:: https://raw.github.com/4teamwork/ftw.redirector/master/docs/controlpanel.png
+
+Redirect rules can easily be managed by editing the configuration:
+
+.. image:: https://raw.github.com/4teamwork/ftw.redirector/master/docs/edit-config.png
+
+
+How it works
+============
+
+- The redirect config is a dexterity object (mainly for ``ftw.publisher`` compatibility).
+- Redirects are only applied if no content is found (404).
+- Redirect rules are applied top-down: top roles have higherpriority.
+  The first matching rule is applied, later rules arenot considered.
+- Redirects match when the request path starts with thesource path.
+- Each rule requires a source path and a destination.
+- The source path must start with a slash and should notbe the site root.
+- The destination may be a path (starting with a slash)or an URL to an external site.
+
 Links
 =====
 
