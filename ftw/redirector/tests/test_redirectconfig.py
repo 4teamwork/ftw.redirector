@@ -4,6 +4,7 @@ from ftw.redirector.interfaces import IRedirectConfig
 from ftw.redirector.tests import FunctionalTestCase
 from ftw.testbrowser import browsing
 from plone import api
+import transaction
 
 
 class TestRedirectConfig(FunctionalTestCase):
@@ -52,3 +53,16 @@ class TestRedirectConfig(FunctionalTestCase):
         browser.login().open(view='@@overview-controlpanel')
         browser.css('.configlets').find('Redirect Configuration').first.click()
         self.assertEquals('http://nohost/plone/redirect-config', browser.url)
+
+    @browsing
+    def test_control_panel_only_visible_when_config_visible(self, browser):
+        user = create(Builder('user').with_roles('Site Administrator'))
+        browser.login(user).open(view='@@overview-controlpanel')
+        self.assertIn('Redirect Configuration',
+                      browser.css('.configlets a').text)
+
+        IRedirectConfig(self.portal).manage_permission('View', [], acquire=False)
+        transaction.commit()
+        browser.reload()
+        self.assertNotIn('Redirect Configuration',
+                         browser.css('.configlets a').text)

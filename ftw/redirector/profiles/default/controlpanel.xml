@@ -7,12 +7,12 @@
                action_id="ftw.redirector"
                appId="ftw.redirector"
                category="Products"
-               condition_expr=""
+               condition_expr="python: portal.portal_membership.checkPermission('View', portal.get('redirect-config', None))"
                icon_expr="string:$portal_url/++resource++ftw.redirector/icon.png"
                url_expr="string:${portal_url}/redirect-config"
                visible="True"
                i18n:attributes="title">
-        <permission>Manage portal</permission>
+        <permission>View</permission>
     </configlet>
 
 </object>
