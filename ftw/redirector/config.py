@@ -140,6 +140,15 @@ class RedirectConfig(Item):
     def exclude_from_nav(self):
         return True
 
+    def cb_isMoveable(self):
+        return 0
+
+    def cb_isCopyable(self):
+        return 0
+
+    def cb_userHasCopyOrMovePermission(self):
+        return 0
+
 
 @adapter(IContentish)
 @implementer(IRedirectConfig)
