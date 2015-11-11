@@ -17,7 +17,10 @@ class CustomFourOhFourView(FourOhFourView):
         if not path:
             return None
 
-        config = IRedirectConfig(self.context)
+        config = IRedirectConfig(self.context, None)
+        if not config:
+            return None
+
         strategy = getMultiAdapter((config, self.request), IRedirectStrategy)
         target = strategy.find_redirect(path.decode('utf-8'))
         if not target:
