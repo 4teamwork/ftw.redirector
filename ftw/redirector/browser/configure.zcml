@@ -15,4 +15,12 @@
         layer="ftw.redirector.interfaces.IRedirectorLayer"
         />
 
+    <browser:page
+        name="export"
+        for="..interfaces.IRedirectConfig"
+        class=".export.ExportRedirectConfigView"
+        permission="zope2.View"
+        layer="ftw.redirector.interfaces.IRedirectorLayer"
+        />
+
 </configure>
