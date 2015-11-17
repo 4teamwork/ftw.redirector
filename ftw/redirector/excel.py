@@ -1,10 +1,14 @@
 from ftw.redirector import _
 from ftw.redirector.interfaces import IRedirectConfig
+from openpyxl import load_workbook
 from openpyxl import Workbook
 from openpyxl.styles import Font
 from openpyxl.writer.excel import save_virtual_workbook
 from plone import api
 from zope.i18n import translate
+
+
+RULES_START_ROW = 2
 
 
 def create_rules_excel():
@@ -28,23 +32,17 @@ def create_rules_excel():
     bold = Font(bold=True)
     cell = sheet.cell(column=1, row=1)
     cell.font = bold
-    cell.value = title
-
-    cell = sheet.cell(column=1, row=3)
-    cell.font = bold
     cell.value = source_title
 
-    cell = sheet.cell(column=2, row=3)
+    cell = sheet.cell(column=2, row=1)
     cell.font = bold
     cell.value = destination_title
 
     # DATA
-    rules_start_index = 4
-
     for rule_nr, rule in enumerate(rules):
-        cell = sheet.cell(column=1, row=rules_start_index+rule_nr)
+        cell = sheet.cell(column=1, row=RULES_START_ROW+rule_nr)
         cell.value = rule['source_path']
-        cell = sheet.cell(column=2, row=rules_start_index+rule_nr)
+        cell = sheet.cell(column=2, row=RULES_START_ROW+rule_nr)
         cell.value = rule['destination']
 
     # match the width to the longest entry
@@ -61,5 +59,27 @@ def create_rules_excel():
     return save_virtual_workbook(book)
 
 
-def import_rules_from_excel(excel):
-    pass
+def load_rules_from_excel(excel_file):
+    book = load_workbook(excel_file, read_only=True)
+    sheet = book.active
+    rows = sheet.rows
+
+    # skip header rows
+    for i in range(RULES_START_ROW-1):
+        next(rows)
+
+    rules = []
+    for row in rows:
+        source_path = row[0].value or ''
+        destination = row[1].value or ''
+
+        # ignore empty lines
+        if len(source_path) == 0 and len(destination) == 0:
+            continue
+
+        rules.append({
+            'source_path': source_path,
+            'destination': destination
+        })
+
+    return rules

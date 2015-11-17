@@ -18,9 +18,16 @@
     <browser:page
         name="export"
         for="..interfaces.IRedirectConfig"
-        class=".export.ExportRedirectConfigView"
+        class=".excel.ExportRedirectConfigView"
         permission="zope2.View"
         layer="ftw.redirector.interfaces.IRedirectorLayer"
+        />
+
+    <browser:page
+        name="import"
+        for="..interfaces.IRedirectConfig"
+        permission="cmf.ModifyPortalContent"
+        class=".excel.ImportRedirectConfigView"
         />
 
 </configure>
