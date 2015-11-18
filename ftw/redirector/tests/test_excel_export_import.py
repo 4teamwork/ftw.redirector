@@ -68,7 +68,7 @@ class TestRedirectConfigExportImport(FunctionalTestCase):
 
         self.grant('Manager')
         browser.login().open(IRedirectConfig(self.portal), view='import')
-        browser.fill({'Redirect Config File': file_}).submit()
+        browser.fill({'Excel redirect config': file_}).submit()
 
         self.assertEquals(
             [{'destination': u'/Plone', 'source_path': u'/theploneasdf'},
