@@ -24,10 +24,6 @@ from zope.interface import Invalid
 
 class ExportRedirectConfigView(BrowserView):
 
-    def __init__(self, context, request):
-        self.context = context
-        self.request = request
-
     def __call__(self):
         response = self.request.RESPONSE
         filename = "redirector_config.xlsx"
