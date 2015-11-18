@@ -11,6 +11,20 @@ import os
 class TestRedirectConfigExportImport(FunctionalTestCase):
 
     @browsing
+    def test_excel_actions_are_available(self, browser):
+        self.grant('Manager')
+        browser.login().open(IRedirectConfig(self.portal))
+        self.assertIn("Excel export", browser.contents)
+        self.assertIn("Excel import", browser.contents)
+
+    @browsing
+    def test_excel_views_are_available(self, browser):
+        self.grant('Manager')
+        browser.login()
+        browser.open(IRedirectConfig(self.portal), view='import')
+        browser.open(IRedirectConfig(self.portal), view='export')
+
+    @browsing
     def test_export(self, browser):
         self.grant('Manager')
         browser.login().open(IRedirectConfig(self.portal))

@@ -46,4 +46,24 @@
         <permission value="Modify portal content"/>
     </action>
 
+    <action
+        action_id="export"
+        title="Excel export"
+        category="object"
+        condition_expr=""
+        url_expr="string:${object_url}/export"
+        visible="True">
+        <permission value="View"/>
+    </action>
+
+    <action
+        action_id="import"
+        title="Excel import"
+        category="object"
+        condition_expr=""
+        url_expr="string:${object_url}/import"
+        visible="True">
+        <permission value="Modify portal content"/>
+    </action>
+
 </object>

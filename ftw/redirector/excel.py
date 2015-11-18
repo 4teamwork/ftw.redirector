@@ -16,6 +16,8 @@ def create_rules_excel():
     request = portal.REQUEST
 
     rules = IRedirectConfig(portal).rules
+    if not rules:
+        rules = []
 
     book = Workbook()
     sheet = book.active
