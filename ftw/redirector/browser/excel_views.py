@@ -9,7 +9,6 @@ from plone.directives import form
 from plone.formwidget.namedfile.widget import NamedFileWidget
 from plone.namedfile.field import NamedBlobFile
 from plone.namedfile.interfaces import INamedFileField
-from Products.Archetypes.utils import contentDispositionHeader
 from Products.Five.browser import BrowserView
 from Products.statusmessages.interfaces import IStatusMessage
 from StringIO import StringIO
@@ -33,8 +32,8 @@ class ExportRedirectConfigView(BrowserView):
         response = self.request.RESPONSE
         filename = "redirector_config.xlsx"
 
-        disp = contentDispositionHeader('attachment', 'l1', filename=filename)
-        response.setHeader("Content-Disposition", disp)
+        response.setHeader('Content-Disposition',
+                           'attachment; filename={}'.format(filename))
         response.setHeader("Content-Type", 'application/vnd.ms-excel')
 
         return create_rules_excel()
