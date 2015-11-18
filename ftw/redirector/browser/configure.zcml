@@ -20,7 +20,6 @@
         for="..interfaces.IRedirectConfig"
         class=".excel_views.ExportRedirectConfigView"
         permission="zope2.View"
-        layer="ftw.redirector.interfaces.IRedirectorLayer"
         />
 
     <browser:page
@@ -28,7 +27,6 @@
         for="..interfaces.IRedirectConfig"
         class=".excel_views.ImportRedirectConfigView"
         permission="cmf.ModifyPortalContent"
-        layer="ftw.redirector.interfaces.IRedirectorLayer"
         />
 
 </configure>
