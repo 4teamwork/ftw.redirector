@@ -64,7 +64,8 @@ def ForceFileUploadFieldWidget(field, request):
 class IRulesUploadSchema(form.Schema):
     form.primary('rules_file')
     rules_file = NamedBlobFile(
-        title=_(u'redirect_confi_file', default=u'Redirect Config File'),
+        title=_(u'redirect_config_file',
+                default=u'Excel redirect config'),
         required=True)
 
 

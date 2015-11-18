@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-11-11 13:08+0000\n"
+"POT-Creation-Date: 2015-11-18 08:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,8 +19,8 @@ msgid "Each rule requires a source path and a destination."
 msgstr ""
 
 #: ./ftw/redirector/config.py:137
+#: ./ftw/redirector/excel.py:25
 #: ./ftw/redirector/profiles/default/controlpanel.xml
-#: ./ftw/redirector/profiles/default/types/ftw.redirector.RedirectConfig.xml
 msgid "Redirect Configuration"
 msgstr ""
 
@@ -40,8 +40,16 @@ msgstr ""
 msgid "The destination may be a path (starting with a slash) or an URL to an external site."
 msgstr ""
 
+#: ./ftw/redirector/browser/excel_views.py:106
+msgid "The redirect config has been replaced."
+msgstr ""
+
 #: ./ftw/redirector/config.py:39
 msgid "The source path must start with a slash and should not be the site root."
+msgstr ""
+
+#: ./ftw/redirector/browser/excel_views.py:82
+msgid "Upload redirect config"
 msgstr ""
 
 #. Default: "Row ${rownum}: the destination \"${value}\" must be a path (start with slash) or a full qualified URL."
@@ -56,6 +64,7 @@ msgstr ""
 
 #. Default: "Destination"
 #: ./ftw/redirector/config.py:60
+#: ./ftw/redirector/excel.py:28
 msgid "label_destination"
 msgstr ""
 
@@ -66,7 +75,18 @@ msgstr ""
 
 #. Default: "Source Path"
 #: ./ftw/redirector/config.py:57
+#: ./ftw/redirector/excel.py:26
 msgid "label_source_path"
+msgstr ""
+
+#. Default: "Please upload a rules excel file."
+#: ./ftw/redirector/browser/excel_views.py:47
+msgid "missing_input_data"
+msgstr ""
+
+#. Default: "Excel redirect config"
+#: ./ftw/redirector/browser/excel_views.py:67
+msgid "redirect_config_file"
 msgstr ""
 
 #. Default: "Row ${rownum}: invalid source path: cannot redirect from root."

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-11-11 13:08+0000\n"
+"POT-Creation-Date: 2015-11-18 08:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,8 +19,8 @@ msgid "Each rule requires a source path and a destination."
 msgstr "Jede Regel benötigt einen Quell-Pfad und ein Ziel."
 
 #: ./ftw/redirector/config.py:137
+#: ./ftw/redirector/excel.py:25
 #: ./ftw/redirector/profiles/default/controlpanel.xml
-#: ./ftw/redirector/profiles/default/types/ftw.redirector.RedirectConfig.xml
 msgid "Redirect Configuration"
 msgstr "Konfiguration Umleitungen"
 
@@ -40,9 +40,17 @@ msgstr "Regeln für Umleitungen werden angewendet wenn der Pfad in der Anfrage (
 msgid "The destination may be a path (starting with a slash) or an URL to an external site."
 msgstr "Das Ziel kann ein Pfad (beginnend mit Slash) oder eine URL zu einer externen Seite sein."
 
+#: ./ftw/redirector/browser/excel_views.py:106
+msgid "The redirect config has been replaced."
+msgstr "Die Umleitungskonfiguration wurde ersetzt."
+
 #: ./ftw/redirector/config.py:39
 msgid "The source path must start with a slash and should not be the site root."
 msgstr "Der Quell-Pfad muss mit einem Slash beginnen und darf nicht das Site-Root sein."
+
+#: ./ftw/redirector/browser/excel_views.py:82
+msgid "Upload redirect config"
+msgstr "Umleitungskonfiguration hochladen"
 
 #. Default: "Row ${rownum}: the destination \"${value}\" must be a path (start with slash) or a full qualified URL."
 #: ./ftw/redirector/config.py:122
@@ -56,6 +64,7 @@ msgstr "Zeile ${rownum}: Ziel benötigt."
 
 #. Default: "Destination"
 #: ./ftw/redirector/config.py:60
+#: ./ftw/redirector/excel.py:28
 msgid "label_destination"
 msgstr "Ziel"
 
@@ -66,8 +75,19 @@ msgstr "Umleitungen"
 
 #. Default: "Source Path"
 #: ./ftw/redirector/config.py:57
+#: ./ftw/redirector/excel.py:26
 msgid "label_source_path"
 msgstr "Quell-Pfad"
+
+#. Default: "Please upload a rules excel file."
+#: ./ftw/redirector/browser/excel_views.py:47
+msgid "missing_input_data"
+msgstr "Bitte wählen Sie die Excel Umleitungskonfiguration aus."
+
+#. Default: "Excel redirect config"
+#: ./ftw/redirector/browser/excel_views.py:67
+msgid "redirect_config_file"
+msgstr "Excel Umleitungskonfiguration"
 
 #. Default: "Row ${rownum}: invalid source path: cannot redirect from root."
 #: ./ftw/redirector/config.py:94
@@ -83,3 +103,5 @@ msgstr "Zeile ${rownum}: Der Quell-Pfad \"$value\" muss mit einem Slash beginnen
 #: ./ftw/redirector/config.py:88
 msgid "source_path_required"
 msgstr "Zeile ${rownum}: Quell-Pfad benögigt."
+
+
