@@ -68,6 +68,11 @@ class TestRedirectStrategy(TestCase):
         self.assert_redirect('https://google.com', '/google')
         self.assert_redirect('https://google.com/apps', '/google/apps')
 
+    def test_test_matches_exact_path_element_only(self):
+        self.configure_redirects(('/foo', '/target1'),
+                                 ('/foos', '/target2'))
+        self.assert_redirect('/target2', '/foos')
+
     def assert_redirect(self, target, source, msg=None):
         self.assertEquals(target, self.strategy.find_redirect(source), msg=msg)
 

@@ -28,7 +28,7 @@ class RedirectStrategy(object):
         if ending_slash(path) == ending_slash(src):
             return dst
 
-        if path.startswith(src):
+        if ending_slash(path).startswith(ending_slash(src)):
             return re.sub('^{}/'.format(re.escape(src)),
                           ending_slash(dst),
                           path)
