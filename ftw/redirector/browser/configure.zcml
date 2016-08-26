@@ -2,9 +2,12 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="ftw.redirector">
 
     <browser:resourceDirectory name="ftw.redirector" directory="resources" />
+
+    <include file="resources.zcml" zcml:condition="installed ftw.theming" />
 
     <browser:page
         name="plone_redirector_view"

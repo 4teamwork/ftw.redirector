@@ -1,0 +1,12 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:theme="http://namespaces.zope.org/ftw.theming"
+    i18n_domain="ftw.redirector">
+
+    <include package="ftw.theming" file="meta.zcml"/>
+
+    <theme:resources profile="ftw.redirector:default" slot="addon">
+        <theme:scss file="resources/redirector-theming.scss" />
+    </theme:resources>
+
+</configure>
