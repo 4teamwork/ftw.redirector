@@ -15,7 +15,6 @@ class TestRedirectingOnNotFound(FunctionalTestCase):
         config.rules = make_rules(('/foo', '/target'))
         create(Builder('page').titled('target'))
 
-        browser.replace_request_header('X-zope-handle-errors', 'True')
         browser.open('http://nohost/plone/foo')
         self.assertEqual('http://nohost/plone/target', browser.url)
 
@@ -26,7 +25,6 @@ class TestRedirectingOnNotFound(FunctionalTestCase):
         config.rules = make_rules(('/foo', '/target'))
         create(Builder('page').titled('target'))
 
-        browser.replace_request_header('X-zope-handle-errors', 'True')
         browser.open('http://nohost/plone/foo')
         self.assertEqual('http://nohost/plone/target', browser.url)
 
@@ -41,6 +39,5 @@ class TestRedirectingOnNotFound(FunctionalTestCase):
         config.rules = make_rules((u'/hall\xf6chen', u'/target'))
         create(Builder('page').titled('target'))
 
-        browser.replace_request_header('X-zope-handle-errors', 'True')
         browser.open('http://nohost/plone/hall\xc3\xb6chen')
         self.assertEqual('http://nohost/plone/target', browser.url)

@@ -25,6 +25,5 @@ class TestPloneRedirector(FunctionalTestCase):
         target.manage_pasteObjects(clipboard)
         transaction.commit()
 
-        browser.replace_request_header('X-zope-handle-errors', 'True')
         browser.open('http://nohost/plone/source/page')
         self.assertEqual('http://nohost/plone/target/page', browser.url)
