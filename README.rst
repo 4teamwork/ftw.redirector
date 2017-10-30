@@ -60,8 +60,8 @@ How it works
   The first matching rule is applied, later rules arenot considered.
 - Redirects match when the request path starts with thesource path.
 - Each rule requires a source path and a destination.
-- The source path must start with a slash and should notbe the site root.
-- The destination may be a path (starting with a slash)or an URL to an external site.
+- The source path must start with a slash and should not be the site root.
+- The destination may be a path (starting with a slash) or an URL to an external site.
 
 Links
 =====
