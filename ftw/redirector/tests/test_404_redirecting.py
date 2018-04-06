@@ -15,6 +15,9 @@ class TestRedirectingOnNotFound(FunctionalTestCase):
         config.rules = make_rules(('/foo', '/target'))
         create(Builder('page').titled(u'target'))
 
+        # Set accept header (needed since Plone 5).
+        browser.append_request_header('Accept', 'text/html')
+
         browser.open('http://nohost/plone/foo')
         self.assertEqual('http://nohost/plone/target', browser.url)
 
@@ -24,6 +27,9 @@ class TestRedirectingOnNotFound(FunctionalTestCase):
         config = IRedirectConfig(self.portal)
         config.rules = make_rules(('/foo', '/target'))
         create(Builder('page').titled(u'target'))
+
+        # Set accept header (needed since Plone 5).
+        browser.append_request_header('Accept', 'text/html')
 
         browser.open('http://nohost/plone/foo')
         self.assertEqual('http://nohost/plone/target', browser.url)
@@ -38,6 +44,9 @@ class TestRedirectingOnNotFound(FunctionalTestCase):
         config = IRedirectConfig(self.portal)
         config.rules = make_rules((u'/hall\xf6chen', u'/target'))
         create(Builder('page').titled(u'target'))
+
+        # Set accept header (needed since Plone 5).
+        browser.append_request_header('Accept', 'text/html')
 
         browser.open('http://nohost/plone/hall\xc3\xb6chen')
         self.assertEqual('http://nohost/plone/target', browser.url)

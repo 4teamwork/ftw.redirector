@@ -25,5 +25,8 @@ class TestPloneRedirector(FunctionalTestCase):
         target.manage_pasteObjects(clipboard)
         transaction.commit()
 
+        # Set accept header (needed since Plone 5).
+        browser.append_request_header('Accept', 'text/html')
+
         browser.open('http://nohost/plone/source/page')
         self.assertEqual('http://nohost/plone/target/page', browser.url)
