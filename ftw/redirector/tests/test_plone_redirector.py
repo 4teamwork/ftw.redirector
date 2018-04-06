@@ -14,9 +14,9 @@ class TestPloneRedirector(FunctionalTestCase):
         """
         self.grant('Manager')
 
-        source = create(Builder('folder').titled('Source'))
-        target = create(Builder('folder').titled('Target'))
-        page = create(Builder('page').titled('Page').within(source))
+        source = create(Builder('folder').titled(u'Source'))
+        target = create(Builder('folder').titled(u'Target'))
+        page = create(Builder('page').titled(u'Page').within(source))
 
         browser.login().open(page)
         self.assertEquals('http://nohost/plone/source/page', browser.url)
@@ -24,6 +24,9 @@ class TestPloneRedirector(FunctionalTestCase):
         clipboard = source.manage_cutObjects(page.getId())
         target.manage_pasteObjects(clipboard)
         transaction.commit()
+
+        # Set accept header (needed since Plone 5).
+        browser.append_request_header('Accept', 'text/html')
 
         browser.open('http://nohost/plone/source/page')
         self.assertEqual('http://nohost/plone/target/page', browser.url)
