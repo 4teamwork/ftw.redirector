@@ -5,6 +5,7 @@ Changelog
 1.0.2 (unreleased)
 ------------------
 
+- Require `openpyxl < 2.6` since newer ones no longer support Python 2.7 [jone]
 - Add support for Plone 5.1.x. [mbaechtold]
 
 
