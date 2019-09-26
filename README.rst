@@ -9,6 +9,12 @@ It allows to add new redirects which may point to internal
 or external URLs.
 
 
+Compatibility
+=============
+
+Supports Plone `4.3` and `5.1`.
+
+
 Installation
 ============
 

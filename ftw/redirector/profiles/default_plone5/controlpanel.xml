@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<object name="portal_controlpanel"
+        xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        i18n:domain="ftw.redirector">
+
+    <configlet title="Redirect Configuration"
+               action_id="ftw.redirector"
+               appId="ftw.redirector"
+               category="Products"
+               condition_expr="python: portal.portal_membership.checkPermission('View', portal.get('redirect-config', None))"
+               icon_expr="string:$portal_url/++resource++ftw.redirector/icon.png"
+               url_expr="string:${portal_url}/redirect-config"
+               visible="True"
+               i18n:attributes="title">
+        <permission>View</permission>
+    </configlet>
+
+</object>

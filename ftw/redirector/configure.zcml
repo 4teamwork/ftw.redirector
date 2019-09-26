@@ -4,6 +4,7 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:profilehook="http://namespaces.zope.org/profilehook"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="ftw.redirector">
 
     <five:registerPackage package="." initialize=".initialize" />
@@ -14,8 +15,17 @@
 
     <genericsetup:registerProfile
         name="default"
-        title="ftw.redirector"
+        zcml:condition="not-have plone-5"
+        title="ftw.redirector default (Plone 4)"
         directory="profiles/default"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <genericsetup:registerProfile
+        name="default"
+        zcml:condition="have plone-5"
+        title="ftw.redirector default (Plone 5)"
+        directory="profiles/default_plone5"
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
@@ -26,8 +36,18 @@
 
     <genericsetup:registerProfile
         name="uninstall"
-        title="ftw.redirector"
+        zcml:condition="not-have plone-5"
+        title="ftw.redirector uninstall (Plone 4)"
         directory="profiles/uninstall"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+        />
+
+    <genericsetup:registerProfile
+        name="uninstall"
+        zcml:condition="have plone-5"
+        title="ftw.redirector uninstall (Plone 5)"
+        directory="profiles/uninstall_plone5"
         provides="Products.GenericSetup.interfaces.EXTENSION"
         for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
         />

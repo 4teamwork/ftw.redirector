@@ -7,7 +7,7 @@ Changelog
 
 - Require `openpyxl < 2.6` since newer ones no longer support Python 2.7 [jone]
 - Add support for Plone 5.1.x. [mbaechtold]
-
+- Add new profiles for Plone 5 (differentiated by title) [djowett-ftw]
 
 1.0.1 (2016-02-26)
 ------------------
