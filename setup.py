@@ -44,6 +44,7 @@ setup(name='ftw.redirector',
       install_requires=[
           'collective.z3cform.datagridfield',
           'ftw.profilehook',
+          'ftw.upgrade',
           'openpyxl < 2.6',
           'plone.api',
           'plone.app.dexterity',
