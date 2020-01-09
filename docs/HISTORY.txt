@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.1.2 (unreleased)
+1.1.2 (2020-01-09)
 ------------------
 
 - Add ftw.redirector portal_type translation to plone domain. [tinagerber]
